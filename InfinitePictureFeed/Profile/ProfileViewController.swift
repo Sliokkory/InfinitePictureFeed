@@ -14,7 +14,7 @@ final class ProfileViewController: UIViewController {
     }
     
     private func profileImage() {
-        let image = UIImage(resource: .photo)
+        let image = UIImage(named: "photo")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         subviews.append(imageView)
@@ -72,9 +72,10 @@ final class ProfileViewController: UIViewController {
     
     private func exitButton() {
         let exitButton = UIButton(type: .custom)
+        let exitImage = UIImage(named: "exit")
         exitButton.translatesAutoresizingMaskIntoConstraints = false
         exitButton.setTitle("", for: .normal)
-        exitButton.setImage(.exit, for: .normal)
+        exitButton.setImage(exitImage, for: .normal)
         subviews.append(exitButton)
         superview.addSubview(exitButton)
         NSLayoutConstraint.activate([
