@@ -2,86 +2,79 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
     
-    @IBOutlet weak var superview: UIView!
-    private var subviews: [UIView] = []
-    
     override func viewDidLoad() {
-        profileImage()
-        userName()
-        userLoginName()
-        userMessage()
-        exitButton()
+        setupViews()
+        setupConstraint()
     }
     
-    private func profileImage() {
+    private let profileImage: UIImageView = {
         let image = UIImage(named: "photo")
         let imageView = UIImageView(image: image)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        subviews.append(imageView)
-        superview.addSubview(imageView)
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: superview.topAnchor, constant: 76),
-            imageView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        ])
-    }
+        return imageView
+    }()
     
-    private func userName() {
+    private let userName: UILabel = {
         let username = UILabel()
         username.translatesAutoresizingMaskIntoConstraints = false
         username.textAlignment = .left
         username.text = "Екатерина Новикова"
         username.textColor = .white
         username.font = UIFont.boldSystemFont(ofSize: 23)
-        subviews.append(username)
-        superview.addSubview(username)
-        NSLayoutConstraint.activate([
-            username.topAnchor.constraint(equalTo: subviews[0].bottomAnchor, constant: 8),
-            username.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        ])
-    }
+        return username
+    }()
     
-    private func userLoginName() {
+    private let userLoginName: UILabel = {
         let userLoginName = UILabel()
         userLoginName.translatesAutoresizingMaskIntoConstraints = false
         userLoginName.textAlignment = .left
         userLoginName.text = "@ekaterina_nov"
         userLoginName.textColor = UIColor(rgb: 0xAEAFB4)
         userLoginName.font = UIFont.systemFont(ofSize: 13)
-        subviews.append(userLoginName)
-        superview.addSubview(userLoginName)
-        NSLayoutConstraint.activate([
-            userLoginName.topAnchor.constraint(equalTo: subviews[1].bottomAnchor, constant: 8),
-            userLoginName.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        ])
-    }
+        return userLoginName
+    }()
     
-    private func userMessage() {
+    private let userMessage: UILabel = {
         let userMessage = UILabel()
         userMessage.translatesAutoresizingMaskIntoConstraints = false
         userMessage.textAlignment = .left
         userMessage.text = "Hello, world!"
         userMessage.textColor = .white
         userMessage.font = UIFont.systemFont(ofSize: 13)
-        subviews.append(userMessage)
-        superview.addSubview(userMessage)
-        NSLayoutConstraint.activate([
-            userMessage.topAnchor.constraint(equalTo: subviews[2].bottomAnchor, constant: 8),
-            userMessage.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        ])
-    }
+        return userMessage
+    }()
     
-    private func exitButton() {
+    private let exitButton:UIButton = {
         let exitButton = UIButton(type: .custom)
         let exitImage = UIImage(named: "exit")
         exitButton.translatesAutoresizingMaskIntoConstraints = false
         exitButton.setTitle("", for: .normal)
         exitButton.setImage(exitImage, for: .normal)
-        subviews.append(exitButton)
-        superview.addSubview(exitButton)
-        NSLayoutConstraint.activate([
-            exitButton.topAnchor.constraint(equalTo: superview.topAnchor, constant: 89),
-            exitButton.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)
-        ])
+        return exitButton
+    }()
+    
+    private func setupViews() {
+        let views = [profileImage, userName, userLoginName, userMessage, exitButton]
+        views.forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+        }
+    }
+    
+    private func setupConstraint() {
+        profileImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 76).isActive = true
+        profileImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+
+        userName.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 8).isActive = true
+        userName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+
+        userLoginName.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: 8).isActive = true
+        userLoginName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+
+        userMessage.topAnchor.constraint(equalTo: userLoginName.bottomAnchor, constant: 8).isActive = true
+        userMessage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        
+        exitButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 89).isActive = true
+        exitButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     }
 }
 

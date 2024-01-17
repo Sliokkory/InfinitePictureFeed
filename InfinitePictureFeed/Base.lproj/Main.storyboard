@@ -199,9 +199,6 @@
                         <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="tab_profile_active" id="ECv-i7-wOw"/>
-                    <connections>
-                        <outlet property="superview" destination="NPM-RD-Jqg" id="Sh7-ab-wcY"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AXH-9Y-FwG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
