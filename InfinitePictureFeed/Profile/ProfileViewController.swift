@@ -42,7 +42,7 @@ final class ProfileViewController: UIViewController {
     
     private let exitButton:UIButton = {
         let exitButton = UIButton(type: .custom)
-        let exitImage = UIImage(named: "exit")
+        let exitImage = UIImage(named: "Exit")
         exitButton.setTitle("", for: .normal)
         exitButton.setImage(exitImage, for: .normal)
         return exitButton
